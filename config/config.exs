@@ -1,0 +1,133 @@
+import Config
+
+# Register the Repo so Mix tasks (mix ecto.create, mix ecto.migrate) can
+# discover it. The actual database path is configured at runtime in
+# PeriodCalendar.Repo.init/2 via the MOB_DATA_DIR environment variable.
+config :period_calendar, ecto_repos: [PeriodCalendar.Repo]
+
+# Wire the Repo into Mob.ScreenState so screens using `vsn:` get automatic
+# state persistence. Remove this line to disable screen state persistence.
+config :mob, :repo, PeriodCalendar.Repo
+
+# `mob_mishka` supplies the `<Mishka…>` composite tags. The ~MOB sigil in
+# mob-that-ships-MOB-247 reads the plugin's manifest and whitelists them
+# automatically; on older mob it does not, so the block below is kept as a
+# compatibility bridge. Once your app is on a mob release that includes
+# plugin-manifest tag discovery, this block can be removed — the plugin's
+# `priv/mob_plugin.exs` already contains the same list.
+#
+# If you eject a composite for editing via `mix mob_mishka.gen <name>`,
+# activate the app-local override with:
+#
+#     config :mob_mishka, :override_namespace, PeriodCalendar.Components
+config :mob, :extra_tags, ~w(
+  MishkaAccordion
+  MishkaAccordionItem
+  MishkaActionIcon
+  MishkaAlertDialog
+  MishkaAlertDialogAction
+  MishkaAlphaSlider
+  MishkaAnchor
+  MishkaAngleSlider
+  MishkaAutocomplete
+  MishkaAvatar
+  MishkaBurger
+  MishkaCheckbox
+  MishkaCheckboxGroup
+  MishkaCheckboxGroupItem
+  MishkaChip
+  MishkaCloseButton
+  MishkaCode
+  MishkaCollapsible
+  MishkaColorInput
+  MishkaColorPicker
+  MishkaColorSwatch
+  MishkaCombobox
+  MishkaContextMenu
+  MishkaDialog
+  MishkaDialogDescription
+  MishkaDialogFooter
+  MishkaDialogTitle
+  MishkaDialogTrigger
+  MishkaDrawer
+  MishkaDrawerFooter
+  MishkaDrawerTrigger
+  MishkaEmptyState
+  MishkaEmptyStateActions
+  MishkaEmptyStateIndicator
+  MishkaField
+  MishkaFieldset
+  MishkaFloatingIndicator
+  MishkaFloatingWindow
+  MishkaFloatingWindowHandle
+  MishkaHighlight
+  MishkaHueSlider
+  MishkaJsonInput
+  MishkaLoadingOverlay
+  MishkaMark
+  MishkaMarquee
+  MishkaMaskInput
+  MishkaMenu
+  MishkaMenuCheckbox
+  MishkaMenuItem
+  MishkaMenuLabel
+  MishkaMenuRadio
+  MishkaMenuSeparator
+  MishkaMenuSubmenu
+  MishkaMenubar
+  MishkaMeter
+  MishkaNavLink
+  MishkaNavigationMenu
+  MishkaNumberField
+  MishkaNumberFormatter
+  MishkaOtpField
+  MishkaOverflowList
+  MishkaPill
+  MishkaPillsInput
+  MishkaPopover
+  MishkaPopoverArrow
+  MishkaPopoverClose
+  MishkaPopoverDescription
+  MishkaPopoverTitle
+  MishkaPopoverTrigger
+  MishkaPreviewCard
+  MishkaPreviewCardTrigger
+  MishkaProgress
+  MishkaRadio
+  MishkaRadioGroup
+  MishkaRadioGroupOption
+  MishkaRollingNumber
+  MishkaScrollArea
+  MishkaScroller
+  MishkaSegmentedControl
+  MishkaSegmentedControlOption
+  MishkaSelect
+  MishkaSelectOption
+  MishkaSemiCircleProgress
+  MishkaSeparator
+  MishkaSkeleton
+  MishkaSlider
+  MishkaSplitter
+  MishkaSpoiler
+  MishkaSwitch
+  MishkaTab
+  MishkaTabs
+  MishkaTagsInput
+  MishkaThemeIcon
+  MishkaToast
+  MishkaToastClose
+  MishkaToastItem
+  MishkaToggle
+  MishkaToggleGroup
+  MishkaToggleGroupItem
+  MishkaToolbar
+  MishkaToolbarButton
+  MishkaToolbarInput
+  MishkaToolbarLink
+  MishkaToolbarSeparator
+  MishkaTooltip
+  MishkaTree
+  MishkaTreeNode
+  MishkaTreeSelect
+  MishkaVisuallyHidden
+)
